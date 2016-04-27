@@ -1,0 +1,21 @@
+{
+  "name": "chat-application-example",
+  "description": "chat application example using socket.io",
+  "main": "app.js",
+  "authors": [
+    "Basilin Joe"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "expressjs",
+    "socket.io"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

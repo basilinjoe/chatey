@@ -1,11 +1,104 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
+<html ng-app="chat">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Chatey
+    </title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbar-header">
+            <div class="container bg-inverse p-a-1">
+                <h3>Collapsed content</h3>
+                <p>Toggleable via the navbar brand.</p>
+            </div>
+        </div>
+        <nav class="navbar navbar-light navbar-static-top bg-faded">
+            <div class="container">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+                    &#9776;
+                </button>
+                <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+                    <a class="navbar-brand" href="">Chatey</a>
+                    <ul class="nav navbar-nav" ng-hide="true">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Nav item <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Another nav item</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">More nav</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Last link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Begin page content -->
+    <div class="container" ng-controller="ChatController as chat">
+        <div class="page-header m-t-1">
+            <h1>Global chat using Chatey</h1>
+        </div>
+        <div class="container" ng-show="chat.message.username">
+            <div class="container">
+              <div class="message-box">
+                <blockquote class="blockquote" ng-class="{'blockquote-reverse':item.blockquote}" ng-repeat="item in chat.messages">
+                  <p>
+                    {{item.message}}
+                  </p>
+                  <footer class="blockquote-footer">{{item.username}} <cite title="{{item.time}}"><small>{{item.time}}</small></cite></footer>
+                </blockquote>
+              </div>
+                <!-- <ul class="list-group">
+              <li class="list-group-item" ng-repeat="item in chat.messages"><span class="{{item.textStyle}}">{{item.username}} : {{item.message}}</span></li>
+            </ul> -->
+            </div>
+            <br>
+            <div class="container">
+                <form ng-submit="chat.sendMessage(chat.message.message )">
+                    <div class="input-group">
+                        <input type="text" ng-model="chat.message.message" class="form-control" required placeholder="Type your Message here ..">
+                        <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">Send</button>
+                </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container" ng-hide="chat.message.username" ng-init="username=''">
+            <form ng-submit="chat.saveUser(username)">
+                <div class="input-group">
+                    <input type="text" ng-model="username" class="form-control" required placeholder="Type your Username here ..">
+                    <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Save</button>
+              </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
+
+    <script src="javascripts/socket.io.js"></script>
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/chat.js"></script>
+    </script>
+
+</body>
+
 </html>
