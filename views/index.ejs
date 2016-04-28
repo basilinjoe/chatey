@@ -8,6 +8,8 @@
     </title>
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/font-awesome.css' />
+    <link rel='stylesheet' href='lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' />
 </head>
 
 <body>
@@ -24,7 +26,7 @@
                     &#9776;
                 </button>
                 <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-                    <a class="navbar-brand" href="">Chatey</a>
+                    <a class="navbar-brand" href="">Chatey <i class="fa fa-comment-o" aria-hidden="true"></i></a>
                     <ul class="nav navbar-nav" ng-hide="true">
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Nav item <span class="sr-only">(current)</span></a>
@@ -49,19 +51,19 @@
         <div class="page-header m-t-1">
             <h1>Global chat using Chatey</h1>
         </div>
+        <div id="sound">
+
+        </div>
         <div class="container" ng-show="chat.message.username">
-            <div class="container">
-              <div class="message-box">
-                <blockquote class="blockquote" ng-class="{'blockquote-reverse':item.blockquote}" ng-repeat="item in chat.messages">
-                  <p>
-                    {{item.message}}
-                  </p>
-                  <footer class="blockquote-footer">{{item.username}} <cite title="{{item.time}}"><small>{{item.time}}</small></cite></footer>
-                </blockquote>
-              </div>
-                <!-- <ul class="list-group">
-              <li class="list-group-item" ng-repeat="item in chat.messages"><span class="{{item.textStyle}}">{{item.username}} : {{item.message}}</span></li>
-            </ul> -->
+            <div id="messages">
+                <div class="message-box" schroll-bottom="chat.messages">
+                    <blockquote class="blockquote" ng-class="{'blockquote-reverse':item.blockquote}" ng-repeat="item in chat.messages">
+                        <p>
+                            {{item.message}}
+                        </p>
+                        <footer class="blockquote-footer">{{item.username}} <cite title="{{item.time}}"><small>{{item.time}}</small></cite></footer>
+                    </blockquote>
+                </div>
             </div>
             <br>
             <div class="container">
@@ -89,12 +91,18 @@
 
     <footer class="footer">
         <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
+            <span class="text-muted">
+              Made to learn <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              Made with <i class="fa fa-heart" aria-hidden="true"></i>
+            </span>
         </div>
     </footer>
 
     <script src="javascripts/socket.io.js"></script>
     <script src="javascripts/angular.min.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="lib/ng-scrollbars/src/scrollbars.js"></script>
     <script src="javascripts/app.js"></script>
     <script src="javascripts/chat.js"></script>
     </script>

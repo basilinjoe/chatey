@@ -22,6 +22,7 @@
         vm.messages = [];
         socket.on('messageb', function(data) {
           vm.messages.push(data);
+          document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="popup.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="popup.mp3" /></audio>';
           $scope.$apply();
         });
 
