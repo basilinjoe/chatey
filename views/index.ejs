@@ -54,25 +54,38 @@
         <div id="sound">
 
         </div>
-        <div class="container" ng-show="chat.message.username">
+        <div class="" ng-show="chat.message.username">
             <div id="messages">
                 <div class="message-box" schroll-bottom="chat.messages">
-                    <blockquote class="blockquote" ng-class="{'blockquote-reverse':item.blockquote}" ng-repeat="item in chat.messages">
-                        <p>
-                            {{item.message}}
-                        </p>
-                        <footer class="blockquote-footer">{{item.username}} <cite title="{{item.time}}"><small>{{item.time}}</small></cite></footer>
+                    <blockquote class="blockquote clearfix" ng-class="{'blockquote-reverse':item.blockquote}" ng-repeat="item in chat.messages">
+                        <div class="user-avatar">
+                            <span class="strip"></span>
+                        </div>
+                        <div class="msg-content">
+                          <p>
+                              {{item.message}}
+                          </p>
+                          <footer class="blockquote-footer">{{item.username}} <cite title="{{item.time}}"><small>{{item.time}}</small></cite></footer>
+
+                        </div>
                     </blockquote>
                 </div>
             </div>
             <br>
-            <div class="container">
+            <div class="">
                 <form ng-submit="chat.sendMessage(chat.message.message )">
-                    <div class="input-group">
-                        <input type="text" ng-model="chat.message.message" class="form-control" required placeholder="Type your Message here ..">
-                        <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit">Send</button>
-                </span>
+                    <div class="row">
+                      <div class="col-sm-11">
+                        <div class="msg-editor">
+                            <input type="text" ng-model="chat.message.message" class="form-control" required placeholder="Type your Message here ..">
+                        </div>
+                      </div>
+                      <div class="col-sm-1">
+                        <div class="msg-button">
+                            <button class="btn btn-secondary" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                      </div>
                     </div>
                 </form>
             </div>
