@@ -90,7 +90,7 @@
                 </form>
             </div>
         </div>
-        <div class="container" ng-hide="chat.message.username" ng-init="username=''">
+        <div class="container" ng-hide="chat.message.username" ng-if="!chat.username">
             <form ng-submit="chat.saveUser(username)">
                 <div class="input-group">
                     <input type="text" ng-model="username" class="form-control" required placeholder="Type your Username here ..">
@@ -113,11 +113,13 @@
 
     <script src="javascripts/socket.io.js"></script>
     <script src="javascripts/angular.min.js"></script>
+    <script src="lib/dexie/dist/dexie.js"></script>
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="lib/ng-scrollbars/src/scrollbars.js"></script>
     <script src="javascripts/app.js"></script>
     <script src="javascripts/chat.js"></script>
+    <script src="javascripts/chat.service.js"></script>
     </script>
 
 </body>

@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "ng-scrollbars": "^0.0.10"
+    "ng-scrollbars": "^0.0.10",
+    "dexie": "^1.4.1"
   }
 }
