@@ -11,14 +11,14 @@
     function chatController($scope,$rootScope,$timeout,dataFactory) {
         var socket = io();
         var vm = this;
-        
+
         vm.sendMessage=sendMessage;
         vm.saveUser = saveUser;
         vm.clearChat = clearChat;
-         
+
         vm.username = $rootScope.username;
         vm.messages = [];
-        
+
         vm.message = {
           user:$rootScope.userId,
           username:$rootScope.username,
@@ -27,7 +27,7 @@
           textStyle:null,
           blockquote:null
         };
-        
+
         function init(){
           initSocket();
           getAllMessageFromDb().then(function(data){
@@ -35,9 +35,9 @@
             $scope.$apply();
           });
         }
-        
+
         init();
-        
+
         function initSocket(){
           socket.on('messageb', function(data) {
             vm.messages.push(data);
@@ -46,7 +46,7 @@
             $scope.$apply();
           });
         }
-        
+
         function saveToDb(data){
           data._id = new Date().getTime();
             dataFactory.create(data).then(function(r){
@@ -58,7 +58,7 @@
                   return data;
                  });
         }
-         
+
         function sendMessage(message){
           if(message){
             var date = new Date();
@@ -76,15 +76,15 @@
             vm.messages.push(temp);
             vm.message.message = null;
           }
-        };
+        }
 
         function saveUser(username){
           vm.message.username = username;
           localStorage.setItem('username',username);
-        };
-        
+        }
+
         function clearChat(){
-          dataFactory.removeAll().then(function(r){console.log(r)});
+          dataFactory.removeAll().then(function(r){console.log(r);});
         }
     }
 })();
